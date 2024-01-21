@@ -9,26 +9,53 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func BenchmarkSub(b *testing.B){
-	b.Run("akhdan",func(b *testing.B) {
-		for i := 0; i < b.N ; i++{
+func BenchmarkTable(b *testing.B) {
+	benchmarks := []struct {
+		nama    string
+		request string
+	}{
+		{
+			nama:    "akeoneuefo",
+			request: "akeoneuefo",
+		},
+		{
+			nama:    "loremipsu",
+			request: "loremipsu",
+		},
+		{
+			nama:    "dani",
+			request: "dani",
+		},
+	}
+	for _, benchbenchmarks := range benchmarks {
+		b.Run(benchbenchmarks.nama, func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				HelloWorld(benchbenchmarks.request)
+			}
+		})
+	}
+}
+
+func BenchmarkSub(b *testing.B) {
+	b.Run("akhdan", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
 			HelloWorld("Akhdan")
 		}
 	})
-	b.Run("oukenzeumasio",func(b *testing.B) {
-		for i := 0; i < b.N ; i++{
+	b.Run("oukenzeumasio", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
 			HelloWorld("oukenzeumasio")
 		}
 	})
 }
 
-func BenchmarkHelloWorld(b *testing.B){
-	for i := 0; i < b.N ; i++{
+func BenchmarkHelloWorld(b *testing.B) {
+	for i := 0; i < b.N; i++ {
 		HelloWorld("Akhdan")
 	}
 }
-func BenchmarkHelloWorldRobbani(b *testing.B){
-	for i := 0; i < b.N ; i++{
+func BenchmarkHelloWorldRobbani(b *testing.B) {
+	for i := 0; i < b.N; i++ {
 		HelloWorld("Robbani")
 	}
 }
